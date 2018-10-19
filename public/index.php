@@ -1,58 +1,31 @@
 <?php
-
 /**
- * Laravel - A PHP Framework For Web Artisans
+ * O projeto el33t não é um projeto de código aberto, sua reprodução ou cópia estão
+ * sujeitos as penalidades da lei.
  *
- * @package  Laravel
- * @author   Taylor Otwell <taylor@laravel.com>
+ * Descrição: Este arquivo de inicialização define as variáveis iniciais do site de maneira global,
+ * ou seja, qualquer coisa que deva estar presente em todas as páginas do projeto, deverão ser encontradas
+ * aqui.
+ *
+ * Criado por Felipe Vieira Vendramini (felipevendramini@live.com)
+ * Criado por Rodrigo Teles Correa (Skype: rodrigo762356)
+ *
+ * Projeto: PhpStorm.
+ * Criado por: FELIPEVIEIRAVENDRAMI
+ * Criado em: 19/10/2018 13:14
  */
 
-/*
-|--------------------------------------------------------------------------
-| Register The Auto Loader
-|--------------------------------------------------------------------------
-|
-| Composer provides a convenient, automatically generated class loader for
-| our application. We just need to utilize it! We'll simply require it
-| into the script here so that we don't have to worry about manual
-| loading any of our classes later on. It feels great to relax.
-|
-*/
+if (isset($INDEX_LOADED))
+    die("Index has already been loaded");
 
-require __DIR__.'/../bootstrap/autoload.php';
+if (!isset($_SESSION)) {
+    session_start();
+}
 
-/*
-|--------------------------------------------------------------------------
-| Turn On The Lights
-|--------------------------------------------------------------------------
-|
-| We need to illuminate PHP development, so let us turn on the lights.
-| This bootstraps the framework and gets it ready for use, then it
-| will load up this application so that we can run it and send
-| the responses back to the browser and delight our users.
-|
-*/
+define ("WEBSITE_ROOT", __DIR__ . "\\");
+define ("WEBSITE_INDEX", WEBSITE_ROOT . "index.php");
 
-$app = require_once __DIR__.'/../bootstrap/app.php';
+// Definição da variável que certifica o carregamento do índice.
+$INDEX_LOADED = true;
 
-/*
-|--------------------------------------------------------------------------
-| Run The Application
-|--------------------------------------------------------------------------
-|
-| Once we have the application, we can handle the incoming request
-| through the kernel, and send the associated response back to
-| the client's browser allowing them to enjoy the creative
-| and wonderful application we have prepared for them.
-|
-*/
-
-$kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
-
-$response = $kernel->handle(
-    $request = Illuminate\Http\Request::capture()
-);
-
-$response->send();
-
-$kernel->terminate($request, $response);
+include_once(WEBSITE_ROOT . "load.php");

@@ -1,0 +1,12 @@
+{
+  "name": "ftwmasters/el33t",
+  "description": "Um gerenciador de torneios online.",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Felipe Vieira Vendramini e Rodrigo Teles",
+      "email": "felipevendramini@live.com"
+    }
+  ]
+}
