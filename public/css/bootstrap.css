@@ -66,7 +66,7 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #fff;
+  background-color: #0a0907;
 }
 
 [tabindex="-1"]:focus {
@@ -3970,6 +3970,7 @@ input[type="button"].btn-block {
   -ms-flex-pack: justify;
   justify-content: space-between;
   padding: 0.5rem 1rem;
+  height: 80px;
 }
 
 .navbar > .container,
@@ -3988,7 +3989,8 @@ input[type="button"].btn-block {
   display: inline-block;
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
-  margin-right: 1rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
   font-size: 1.25rem;
   line-height: inherit;
   white-space: nowrap;
@@ -6143,7 +6145,7 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background-color: #8480ff !important;
+  background-color: #1c2d63 !important;
 }
 
 a.bg-dark:hover, a.bg-dark:focus,
