@@ -1,3 +1,7 @@
+@php
+    require_once(WEBSITE_ROOT . "../app/Content/IndexCarousel.php");
+    use App\IndexCarousel;
+@endphp
 @if(Auth::guest())
 <div class="col-md-9">
 @else

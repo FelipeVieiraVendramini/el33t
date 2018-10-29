@@ -11,12 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('master');
-});
-
-Route::get('/dashboard', function (){ return view('dashboard'); });
+Route::get('/', function () { return view('master'); })->name('master');
+Route::get('/home', function () { return view('master'); })->name('home');
+Route::get('/dashboard', function (){ return view('dashboard'); })->name('dashboard');
+Route::get('/play', function (){ return view('master'); })->name('play');
+Route::get('/organize', function (){ return view('master'); })->name('organize');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('master');
+// route to the activation system
+$this->get('/verify-user/{code}', 'Auth\RegisterController@activateUser')->name('activate.user');
+
+// named routes

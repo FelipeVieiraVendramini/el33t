@@ -1,23 +1,11 @@
-@extends('layouts.app')
+@include('home.service')
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+<div class="album py-5 bg-light">
 
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+    @include('home.tournaments')
 
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('home.updates')
+
+    @include('home.pricing')
+
 </div>
-@endsection
