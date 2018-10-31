@@ -1,0 +1,21 @@
+.button-with-image:before {
+    content: "";
+    width: 180px;
+    height: 180px;
+    display: inline-block;
+    margin: 2px;
+    vertical-align: bottom;
+    horiz-align: center;
+    background: transparent no-repeat center center;
+}
+
+.league-icn {
+    background-image: url('/images/organize/key.png');
+}
+.eliminations-icn:before {
+    background-image: url('/images/organize/key.png');
+    background-size: contain;
+}
+.league-eliminations-icn {
+    background-image: url('/images/organize/key.png');
+}

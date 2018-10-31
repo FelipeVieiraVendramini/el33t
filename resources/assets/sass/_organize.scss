@@ -1,0 +1,86 @@
+.button-with-image:before {
+  content: "";
+  width: 180px;
+  height: 180px;
+  display: inline-block;
+  margin: 2px;
+  vertical-align: bottom;
+  horiz-align: center;
+  background: transparent no-repeat center center;
+}
+
+.league-icn {
+  background-image: url($baseDomain + '/images/organize/key.png');
+}
+.eliminations-icn:before {
+  background-image: url($baseDomain + '/images/organize/key.png');
+  background-size: contain;
+}
+.league-eliminations-icn {
+  background-image: url($baseDomain + '/images/organize/key.png');
+}
+
+/* Carousel base class */
+.carousel {
+  margin-bottom: 4rem;
+}
+
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  bottom: 3rem;
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+  height: 26rem;
+  background-color: #777;
+}
+
+.carousel-item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 26rem;
+}
+
+.text-white-50 {
+  color: rgba(255, 255, 255, .5);
+}
+
+.bg-purple {
+  background-color: #8480ff;
+}
+
+.lh-100 {
+  line-height: 1;
+}
+
+.lh-125 {
+  line-height: 1.25;
+}
+
+.lh-150 {
+  line-height: 2.5;
+}
+
+.cont-background {
+  background: url($baseDomain + "/images/search-background.jpg") no-repeat;
+}
+
+.flex-equal > * {
+  -ms-flex: 1;
+  flex: 1;
+}
+
+@media (min-width: 768px) {
+  .flex-md-equal > * {
+    -ms-flex: 1;
+    flex: 1;
+  }
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}

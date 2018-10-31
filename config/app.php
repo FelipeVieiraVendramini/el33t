@@ -225,7 +225,15 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Input' => Illuminate\Support\Facades\Input::class,
 
+        'Games' => App\Games::class,
+        'GamePlatform' => App\GamePlatform::class,
+        'Tournament' => App\Tournament::class,
+        'GamesPlatformRelation' => App\GamesPlatformRelation::class,
+        'TournamentSchedule' => App\TournamentSchedule::class,
+        'TournamentTeam' => App\TournamentTeam::class,
+        'TournamentTeamMembers' => App\TournamentTeamMembers::class,
     ],
 
 ];

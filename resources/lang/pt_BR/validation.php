@@ -103,6 +103,92 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'reg_name' => [
+            'min' => 'Seu nome de usuário deve conter no mínimo :min caracteres. Espaços, traços e underline permitidos.',
+            'max' => 'Seu nome de usuário deve conter no máximo :max caracteres. Espaços, traços e underline permitidos.',
+            'unique' => 'O nome de usuário escolhido já está em uso.',
+        ],
+        'reg_email' => [
+            'min' => 'O endereço de e-mail informado não é válido.',
+            'max' => 'O endereço de e-mail informado não é válido.',
+            'unique' => 'O endereço de e-mail está em uso.',
+        ],
+        'reg_password' => [
+            'min' => 'Sua senha deve conter no mínimo :min caracteres.',
+            'max' => 'Sua senha deve conter até :max caracteres.',
+            'same' => 'Suas senhas não são iguais.',
+        ],
+        'agree_tos' => [
+            'required' => 'Você deve aceitar os Termos de serviço e os Termos de privacidade.',
+            'accepted' => 'Você deve aceitar os Termos de serviço e os Termos de privacidade.'
+        ],
+        'codGame' => [
+            'required' => 'Você precisa informar o jogo que será utilizado na competição.',
+            'numeric' => 'O jogo informado não existe.',
+            'min' => 'Você precisa informar o jogo que será utilizado na competição.',
+        ],
+        'gamePlataform' => [
+            'required' => 'Você precisa informar uma plataforma válida para o jogo.',
+            'numeric' => 'Você precisa informar uma plataforma válida para o jogo.',
+            'min' => 'Você precisa informar uma plataforma válida para o jogo.',
+        ],
+        'eventEmail' => [
+            'required' => 'Informe um e-mail válido para o evento.',
+            'string' => 'Informe um e-mail válido para o evento.',
+            'email' => 'Informe um e-mail válido para o evento.',
+            'max' => 'O endereço de e-mail com certeza não excede :max caracteres! O_o',
+        ],
+        'eventPhone' => [
+            'required' => 'Por favor, nos informe um telefone para contato.',
+            'string' => 'Por favor, nos informe um telefone válido para contato.',
+            'min' => 'O número de telefone não é válido. Deve conter no mínimo :min caracteres. Apenas números são permitidos.',
+            'max' => 'O número de telefone não é válido. Deve conter no máximo :max caracteres. Apenas números são permitidos.',
+        ],
+        'eventName' => [
+            'required' => 'Você precisa dar um nome para o seu evento!',
+            'string' => 'O nome do seu evento só pode conter caracteres alfanuméricos.',
+            'min' => 'O nome do seu evento deve conter no mínimo :min caracteres.',
+            'max' => 'O nome do seu evento não pode exceder :max caracteres.',
+            'unique' => 'Já existe um evento com este nome.',
+        ],
+        'eventStartDate' => [
+            'required' => 'Você precisa informar a data de início do seu evento.',
+            'date' => 'Você não inseriu uma data válida para o início do evento.',
+            'after_or_equal' => 'O início do evento deve ser após a data do fim das inscrições.',
+        ],
+        'eventStartInscDate' => [
+            'required' => 'Você precisa informar o ínicio das inscrições.',
+            'date' => 'Você não inseriu uma data válida para o início das inscrições.',
+            'after_or_equal' => 'O início das inscrições só pode ser definido para um momento após a criação.',
+            'before' => 'O início das inscrições deve ser uma data antes do final das inscrições.',
+        ],
+        'eventEndInscDate' => [
+            'date' => 'Você não inseriu uma data válida para o final das inscrições.',
+            'after' => 'O final das inscrições deve ser definido para depois do início das descrições.',
+            'before' => 'O final das inscrições deve ser uma data antes do início do evento.',
+        ],
+        'eventDescription' => [
+            'required' => 'Você não escreveu uma descrição para o seu evento.',
+            'string' => 'A descrição do evento não é um texto válido.',
+            'max' => 'A descrição do evento não pode exceder :max caracteres.',
+        ],
+        'eventPrize' => [
+            'required' => 'Você precisa definir se o seu evento terá ou não um prêmio.',
+            'boolean' => 'Você precisa definir se o seu evento terá ou não um prêmio.',
+        ],
+        'eventRules' => [
+            'string' => 'As regras do evento não contém um texto válido.',
+            'max' => 'As regras do evento não podem exceder :max caracteres.',
+        ],
+        'eventPaid' => [
+            'required' => 'Você precisa definir se o seu evento é pago ou gratuito.',
+            'boolean' => 'Você precisa definir se o seu evento é pago ou gratuito.',
+        ],
+        'eventLogo' => [
+            'file' => 'Você não enviou um arquivo válido.',
+            'mimes' => 'O arquivo do logo deve ser uma imagem de um dos seguintes formatos: :values.',
+            'max' => 'O arquivo do logo deve conter no máximo :max KB.',
+        ],
     ],
 
     /*

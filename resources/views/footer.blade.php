@@ -1,4 +1,4 @@
-<footer class="container-fluid pt-4 pt-md-5 border-top bg-light">
+<footer class="container-fluid pt-4 pt-md-4 border-top bg-light" style="margin-top: 2rem;">
     <div class="row">
         <div class="col-12 col-md">
             <img class="mb-2" src="http://upload.wikimedia.org/wikipedia/commons/a/ab/Logo_TV_2015.png" alt=""

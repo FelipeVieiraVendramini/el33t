@@ -103,6 +103,21 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'reg_username' => [
+            'min' => 'Seu nome de usuário deve conter entre :min e :max caracteres. Espaços, traços e underline permitidos.',
+            'max' => 'Seu nome de usuário deve conter entre :min e :max caracteres. Espaços, traços e underline permitidos.',
+            'unique' => 'O nome de usuário escolhido já está em uso.',
+        ],
+        'reg_modal_email' => [
+            'min' => 'O endereço de e-mail informado não é válido.',
+            'max' => 'O endereço de e-mail informado não é válido.',
+            'unique' => 'O endereço de e-mail está em uso.',
+        ],
+        'reg_modal_password' => [
+            'min' => 'Sua senha deve conter entre :min e :max caracteres.',
+            'max' => 'Sua senha deve conter entre :min e :max caracteres.',
+            'same' => 'Suas senhas não são iguais.',
+        ],
     ],
 
     /*
@@ -116,6 +131,7 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+    ],
 
 ];

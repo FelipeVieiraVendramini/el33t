@@ -24,12 +24,20 @@
                     <a href="{{env('APP_URL').env('APP_DASHBOARD')}}" class="nav-link">{{Lang::get('navbar.administrator')}}</a>
                 </li>
             @endif
-            <li class="nav-item">
-                <a href="{{ route('logout') }}" class="nav-link"
-                   onclick="event.preventDefault();
-                   document.getElementById('logout-form').submit();">
-                    {{Lang::get('navbar.logout')}}
-                </a>
+            <li class="nav-item dropleft">
+                <a class="nav-link dropdown-toggle" href="{{route('master')}}" id="dropdown01" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">{{ Auth()->user()->username }}</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" href="#">Meu perfil</a>
+                    <a class="dropdown-item" href="#">Meus torneios</a>
+                    <a class="dropdown-item" href="#">Minhas participações</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="{{ route('logout') }}" class="dropdown-item"
+                       onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                        {{Lang::get('navbar.logout')}}
+                    </a>
+                </div>
             </li>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 {{ csrf_field() }}
