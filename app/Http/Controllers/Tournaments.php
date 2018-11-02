@@ -100,6 +100,8 @@ class Tournaments extends Controller
         if ($tournament->release > 0)
             return redirect()->route('home')->withErrors(\Lang::get('tournament.creation_event_already_complete'));
 
+        $tournament->init();
+
         return view('master', [
             'routeName' => 'tournament',
             'subRoute' => 'create',

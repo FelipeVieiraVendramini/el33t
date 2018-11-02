@@ -51,7 +51,17 @@
             </div>
             <div class="col-10">
                 <div class="btn-group btn-group-toggle platform-btn-group" data-toggle="buttons">
-
+                    @if (old('gamePlataform') != 0)
+                        @foreach (GamesPlatformRelation::where('game_id', '=', old('gamePlataform'))->get() as $relation)
+                            @php
+                            $plat = GamePlatform::where('id', $relation->platform_id)->firstOrFail();
+                            @endphp
+                            <label class="btn btn-secondary{{ old('gamePlataform') == $plat->id ? ' active' : '' }}">
+                                <input type="radio" name="gamePlataform" id="platform{{ $relation->platform_id }}" autocomplete="off"
+                                    value="{{ $plat->id }}" checked> {{ $plat->name }}
+                            </label>
+                        @endforeach
+                    @endif
                     @if ($errors->has('gamePlataform'))
                         <div class="invalid-feedback">
                             {{ $errors->first('gamePlataform') }}
@@ -176,11 +186,11 @@
                         <label for="eventPrize">Premiação</label> <br/>
                         <div class="btn-group btn-group-toggle{{ $errors->has('eventPrize') ? " is-invalid" : "" }}"
                              data-toggle="buttons">
-                            <label class="btn btn-secondary">
+                            <label class="btn btn-secondary{{ old('eventPrize') == 0 ? ' active' : '' }}">
                                 <input type="radio" name="eventPrize" id="prizes0"
                                        value="0"> Não
                             </label>
-                            <label class="btn btn-secondary">
+                            <label class="btn btn-secondary{{ old('eventPrize') == 1 ? ' active' : '' }}">
                                 <input type="radio" name="eventPrize" id="prizes1"
                                        value="1" checked> Sim
                             </label>
@@ -208,13 +218,13 @@
                         <label for="eventPaid">Inscrição*</label> <br/>
                         <div class="btn-group btn-group-toggle{{ $errors->has('eventPaid') ? " is-invalid" : "" }}"
                              data-toggle="buttons">
-                            <label class="btn btn-secondary">
+                            <label class="btn btn-secondary{{ old('eventPaid') == 0 ? ' active' : '' }}">
                                 <input type="radio" name="eventPaid" id="inscription0"
-                                       value="0" checked> Gratuito
+                                       value="0" onchange="switchInscriptionMode(0)"> Gratuito
                             </label>
-                            <label class="btn btn-secondary">
+                            <label class="btn btn-secondary{{ old('eventPaid') == 1 ? ' active' : '' }}">
                                 <input type="radio" name="eventPaid" id="inscription1"
-                                       value="1"> Pago
+                                       value="1" onchange="switchInscriptionMode(1)"> Pago
                             </label>
                         </div>
                         @if ($errors->has('eventPaid'))
@@ -237,6 +247,22 @@
                     </div>
                 </div>
             </div>
+            <div class="col" id="paid-event">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="eventPaymentDescription">Instruções para pagamento*</label>
+                        <textarea id="eventPaymentDescription" class="form-control" name="eventPaymentDescription">{{old('eventPaymentDescription')}}</textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="eventPaymentValue">Valor da inscrição*</label>
+                        <input class="form-control" name="eventPaymentValue" type="text" placeholder="R$ 15,00"
+                               id="eventPaymentValue" value="{{old('eventPaymentValue')}}"
+                                data-mask="#.##0,00" data-mask-reverse="true">
+                    </div>
+                </div>
+
+            </div>
         </div>
 
         <h2>Estrutura</h2>
@@ -246,17 +272,17 @@
             <div class="col-md-12 mb-4">
                 <label for="eventType">Tipo de torneio*</label><br/>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-secondary button-with-image eliminations-icn">
+                    <label class="btn btn-secondary{{ old('eventType') == 0 ? ' active' : '' }} button-with-image eliminations-icn">
                         <input type="radio" name="eventType" id="leaguetype0"
                                value="0" checked> <br/>Eliminatórias
                     </label>
-                    <label class="btn btn-secondary button-with-image eliminations-icn">
+                    <label class="btn btn-secondary{{ old('eventType') == 1 ? ' active' : '' }} button-with-image eliminations-icn">
                         <input type="radio" name="eventType" id="leaguetype1"
                                value="1"> <br/>Liga
                     </label>
-                    <label class="btn btn-secondary button-with-image eliminations-icn">
+                    <label class="btn btn-secondary{{ old('eventType') == 2 ? ' active' : '' }} button-with-image eliminations-icn">
                         <input type="radio" name="eventType" id="leaguetype2"
-                               value="1"> <br/>Grupo + Eliminatórias
+                               value="2"> <br/>Grupo + Eliminatórias
                     </label>
                 </div>
             </div>
@@ -264,13 +290,13 @@
             <div class="col-md-12 mb-4">
                 <label for="eventMode">Modo de torneio*</label><br/>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-secondary">
+                    <label class="btn btn-secondary{{ old('eventMode') == 0 ? ' active' : '' }}">
                         <input type="radio" name="eventMode" id="leagueusertype0"
-                               value="0" onchange="switchRegisterToTeamMode()"> Equipe
+                               value="0" onchange="switchRegisterMode(0)"> Equipe
                     </label>
-                    <label class="btn btn-secondary">
+                    <label class="btn btn-secondary{{ old('eventMode') == 1 ? ' active' : '' }}">
                         <input type="radio" name="eventMode" id="leagueusertype1"
-                               value="1" onchange="switchRegisterToIndividual()"> Individual
+                               value="1" onchange="switchRegisterMode(1)"> Individual
                     </label>
                 </div>
             </div>
@@ -282,17 +308,17 @@
                         <select name="eventModeTeamsAmount" class="custom-select custom-select-md mb-3">
                             <option value="0" selected>Selecione a quantidade de equipes...</option>
                             @for ($i = 1; $i < 9; $i++)
-                                <option value="{{$i}}">{{pow(2, $i)}}</option>
+                                <option value="{{$i}}"{{ old('eventModeTeamsAmount') == $i ? ' selected' : '' }}>{{pow(2, $i)}}</option>
                             @endfor
                         </select>
                     </div>
                     <div class="col-md-4">
                         <label for="minMemberPerTeam">Nº Mínimo de jogadores por equipe*</label>
-                        <input type="number" class="form-control" placeholder="5" name="minMemberPerTeam"/>
+                        <input type="number" class="form-control" placeholder="5" name="minMemberPerTeam" value="{{old('minMemberPerTeam')}}"/>
                     </div>
                     <div class="col-md-4">
-                        <label for="manMemberPerTeam">Nº Mínimo de jogadores por equipe*</label>
-                        <input type="number" class="form-control" placeholder="5" name="maxMemberPerTeam"/>
+                        <label for="manMemberPerTeam">Nº Máximo de jogadores por equipe*</label>
+                        <input type="number" class="form-control" placeholder="5" name="maxMemberPerTeam" value="{{old('maxMemberPerTeam')}}"/>
                     </div>
                 </div>
             </div>
@@ -302,7 +328,7 @@
                     <select name="eventModeSoloAmount" class="custom-select custom-select-md mb-3">
                         <option value="0" selected>Selecione a quantidade de jogadores...</option>
                         @for ($i = 1; $i < 9; $i++)
-                            <option value="{{$i}}">{{pow(2, $i)}}</option>
+                            <option value="{{$i}}"{{ old('eventModeSoloAmount') == $i ? ' selected' : '' }}>{{pow(2, $i)}}</option>
                         @endfor
                     </select>
                 </div>

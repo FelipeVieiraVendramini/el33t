@@ -27,8 +27,6 @@ class Tournament extends Model
     public $Platform;
 
     public function init() {
-        \Log::debug(sprintf('%d,%d,%d,%d', $this->game_id, $this->creator_id, $this->platform, $this->id));
-
         $this->Game = Games::find($this->game_id);
         $this->Owner = User::find($this->creator_id);
         $this->Platform = GamePlatform::find($this->platform);

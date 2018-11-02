@@ -30,20 +30,28 @@ $(function() {
 
     $('#eventModeTeams').hide();
     $('#eventModeSolo').hide();
+    $('#paid-event').hide();
 });
 
-function switchRegisterToTeamMode() {
+function switchRegisterMode(mode) {
     var team = $('#eventModeTeams');
     var solo = $('#eventModeSolo');
 
-    team.show(500);
-    solo.hide();
+    if (mode === 0) {
+        team.show(500);
+        solo.hide();
+    } else {
+        solo.show(500);
+        team.hide();
+    }
 }
 
-function switchRegisterToIndividual() {
-    var team = $('#eventModeTeams');
-    var solo = $('#eventModeSolo');
+function switchInscriptionMode(mode) {
+    var div = $('#paid-event');
 
-    solo.show(500);
-    team.hide();
+    if (mode === 1) {
+        div.show(500);
+    } else {
+        div.hide();
+    }
 }

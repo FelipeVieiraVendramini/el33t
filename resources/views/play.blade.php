@@ -121,7 +121,7 @@
     </table>
     <nav aria-label="Navegação da pesquisa de torneios.">
         <ul class="pagination justify-content-end">
-            <li class="page-item disabled">
+            <li class="page-item{{ $pagination == 0 ? ' disabled' : ''  }}">
                 <a class="page-link" href="#" tabindex="-1">Previous</a>
             </li>
             @for ($i = max(0, $pagination-5), $count = 0;
@@ -131,7 +131,7 @@
                     <a class="page-link" href="{{ route('play'). '/' . $platform . '/' . ($i+1) }}">{{++$i}}</a>
                 </li>
             @endfor
-            <li class="page-item disabled">
+            <li class="page-item{{ floor($max_result/env('TOURNAMENTS_LIST_PAGE_LIMIT')) == $pagination ? ' disabled' : '' }}">
                 <a class="page-link" href="#">Next</a>
             </li>
         </ul>

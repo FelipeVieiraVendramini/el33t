@@ -69,7 +69,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-
+<script src="{{asset("/js/jquery.mask.min.js")}}"></script>
 @if ($errors->has('email') || $errors->has('password'))
     <script type="application/javascript">
         $(document).ready(function(){
@@ -77,8 +77,12 @@
         });
     </script>
 @endif
-
 @if ($routeName == "organize")
+    <script type="application/javascript">
+        /*$(document).ready(function() {
+            $('#eventPaymentValue').mask("#.##0,00", {reverse: true});
+        });*/
+    </script>
     <script src="{{asset("/js/organize.js")}}"></script>
 @endif
 </body>
